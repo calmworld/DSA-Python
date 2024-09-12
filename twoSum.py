@@ -35,7 +35,7 @@ Follow-up: Can you come up with an algorithm that is less than O(n2) time comple
 
 from typing import List
 
-# Approach 1: Brute Force
+# Approach 1: Using Brute Force
 
 # class Solution:
 #     def twoSum(self, nums: List[int], target: int) -> List[int]:
@@ -50,24 +50,54 @@ from typing import List
 
 
 # Approach 2: Using a Two-Pass Hash Table
+"""
+A dictionary numMap is created to store the indices of the numbers in the list nums.
+
+First Pass - Building the Hash Table: 
+    - Iterate through the list nums and populate the numMap dictionary.
+    - For each element nums[i], store its index i in the dictionary with the element itself as the key.
+    - This allows quick look-up of any number's index in the list.
+
+Second Pass - Finding the Two Numbers:
+    - Iterate through the list nums again.
+    - For each element nums[i], calculate its complement as target - nums[i].
+    - Check if the complement exists in the numMap dictionary and ensure that 
+    the complement is not the same element as nums[i] (i.e., numMap[complement] != i).
+    - If both conditions are met, return the indices [i, numMap[complement]].
+"""
+# class Solution:
+#     def twoSum(self, nums: List[int], target: int) -> List[int]:
+#         numMap = {}
+#         n = len(nums)
+
+#         # Build the hash table
+#         for i in range(n):
+#             numMap[nums[i]] = i
+
+#         # Find the two numbers
+#         for i in range(n):
+#             complement = target - nums[i]
+#             if complement in numMap and numMap[complement] != i:
+#                 return [i, numMap[complement]]
+
+#         return []
+
+
+
+
+# Approach 3: Using a One-Pass Hash Table
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         numMap = {}
         n = len(nums)
 
-        # Build the hash table
-        for i in range(n):
-            numMap[nums[i]] = i
-
-        # Find the two numbers
         for i in range(n):
             complement = target - nums[i]
-            if complement in numMap and numMap[complement] != i:
-                return [i, numMap[complement]]
-
+            if complement in numMap:
+                return [numMap[complement], i]
+            numMap[nums[i]] = i
+        
         return []
-
-
 
 
 # Create an instance of the Solution class
