@@ -1,36 +1,3 @@
-
-
-
-class Solution:
-    def openDoors(self, Num):
-        
-        n = Num
-        doors = [False] * n
-        opened = []
-
-        for x in range(0, n):
-            for y in range(x, n, x+1):
-                doors[y] = not doors[y]
-
-        for j in range(0, n):
-            if doors[j] != False:
-                opened.append(j)
-
-        return opened
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 """
 Consider a long alley with a N number of doors on one side. All the doors are closed initially. 
 
@@ -86,7 +53,7 @@ Constraints:
 
 # Method 1: Importing math module and using math.sqrt() function
 
-import math
+# import math
 
 # class Solution:
 #     def noOfOpenDoors(self, N):
@@ -187,6 +154,24 @@ so need to track which door I was on with an index, which is why I used the rang
 #         return opened
 
 
+# Method 5: return indices of open doors
+
+class Solution:
+    def openDoors(self, Num):
+        
+        n = Num
+        doors = [False] * n
+        opened = []
+
+        for x in range(0, n):
+            for y in range(x, n, x+1):
+                doors[y] = not doors[y]
+
+        for j in range(0, n):
+            if doors[j] is not False:
+                opened.append(j)
+
+        return opened
 
 # Create an instance of the Solution class
 solution = Solution()
