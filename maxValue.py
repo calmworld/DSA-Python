@@ -4,7 +4,6 @@ def max_value(nums):
       if i > largest:
          largest = i
   return largest
-
     
 
 print(max_value([4, 7, 2, 8, 10, 9]))
