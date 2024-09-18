@@ -12,10 +12,10 @@ Anagrams are strings that contain the same characters, but in any order.
 
 # Method 2: Using the Counter() function from the collections module
 
-from collections import Counter
+# from collections import Counter
 
-def anagrams(s1, s2):
-    return Counter(s1) == Counter(s2)
+# def anagrams(s1, s2):
+#     return Counter(s1) == Counter(s2)
 
 
 # Method 3: Using a dictionary
