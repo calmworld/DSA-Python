@@ -56,30 +56,30 @@ class ListNode:
 class Solution:
     
 # Hash Table Method:
-    def hasCycle(self, head: Optional[ListNode]) -> bool:
-        visited = set()
-        curr = head
+    # def hasCycle(self, head: Optional[ListNode]) -> bool:
+    #     visited = set()
+    #     curr = head
         
-        while curr:
-            if curr in visited:
-                return True
-            visited.add(curr)
-            curr = curr.next
-        return False
+    #     while curr:
+    #         if curr in visited:
+    #             return True
+    #         visited.add(curr)
+    #         curr = curr.next
+    #     return False
     
 
 # Two-Pointers Method (Floyd's Cycle-Finding Algorithm):
-    # def hasCycle(self, head: Optional[ListNode]) -> bool:
-    #     slow_pointer = head
-    #     fast_pointer = head
+    def hasCycle(self, head: Optional[ListNode]) -> bool:
+        slow_pointer = head
+        fast_pointer = head
         
         
-    #     while slow_pointer and fast_pointer:
-    #         slow_pointer = slow_pointer.next
-    #         fast_pointer = fast_pointer.next.next
-    #         if slow_pointer == fast_pointer:
-    #             return True
-    #     return False
+        while slow_pointer and fast_pointer:
+            slow_pointer = slow_pointer.next
+            fast_pointer = fast_pointer.next.next
+            if slow_pointer == fast_pointer:
+                return True
+        return False
 
 # Manually create the linked list [3, 2, 0, -4] and create a cycle at position 1
 node1 = ListNode(3)
@@ -96,4 +96,4 @@ node4.next = node2  # Create cycle here
 solution = Solution()
 
 # Call the hasCycle method on the instance
-print(solution.hasCycle(node1))
+print(solution.hasCycle(node1)) # True
