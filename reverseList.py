@@ -28,32 +28,56 @@ class Node:
         self.next = None
 
 
-# Recursive Method:
+# Method 1 - Recursive Method:
+
+# def reverseList(head):
+#     if head is None or head.next is None:
+#         return head
+    
+#     print(f"Initial_head_data##head.data: {head.data}")
+    
+#     # reverse the rest of linked list and put the 
+#     # first element at the end
+#     rest = reverseList(head.next)
+#     print(f"BREAK------------------------------BREAK")
+#     print(f"reversed_list##head: {head.data}")
+#     print(f"BREAK------------------------------BREAK")
+#     print(f"reveresed_list##head.next: {head.next.data}")
+#     # print(f"first##rest: {rest.data}")
+    
+
+#     # Make the current head as last node of remaining linked list
+#     head.next.next = head
+#     print(f"BREAK------------------------------BREAK")
+#     print(f"make_current_head_last_node_of_remaining_linked_list##head.next.next: {head.next.next.data}")
+#     print(f"##head.next.next.next: {head.next.next.next.data}")
+    
+#     # Update next of current head to NULL
+#     head.next = None
+#     print(f"BREAK------------------------------BREAK")
+#     print(f"Last##head.next: {head.data}")
+    
+#     return rest
+
+
+# Method 2 - Iterative Method
 
 def reverseList(head):
-    if head is None or head.next is None:
-        return head
-    
-    print(f"First##head.data: {head.data}")
-    
-    # reverse the rest of linked list and put the 
-    # first element at the end
-    rest = reverseList(head.next)
-    print(f"reveresed_List##head.data: {head.data}")
-    # print(f"first##rest: {rest.data}")
-    
+        prev = None  # Previous node starts as None
+        curr = head  # Current node starts at the head
 
-    # Make the current head as last node of remaining linked list
-    head.next.next = head
-    print(f"just_the_head##head: {head.data}")
-    print(f"current_head##head.next.next: {head.next.next.data}")
-    print(f"the next one to current head##head.next.next.next: {head.next.next.next.data}")
-    
-    # Update next of current head to NULL
-    head.next = None
-    print(f"Last##head.next: {head.data}")
-    
-    return rest
+        # Traverse the list
+        while curr is not None:
+            next_node = curr.next  # Save the next node
+            
+            curr.next = prev  # Reverse the link
+            
+            # Move pointers forward
+            prev = curr  # Move prev to the current node
+            curr = next_node  # Move curr to the next node
+
+        # prev is now the new head of the reversed list
+        return prev
 
 
 def print_list(node):
