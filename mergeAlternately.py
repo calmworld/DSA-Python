@@ -37,7 +37,7 @@ Constraints:
 word1 and word2 consist of lowercase English letters.
 """
 
-from itertools import zip_longest
+# from itertools import zip_longest
 
 # Method 1 - using itertools.zip_longest to merge the two strings in an alternating order
 # def mergeAlternately(word1: str, word2: str) -> str:
@@ -63,13 +63,14 @@ def mergeAlternately(word1: str, word2: str) -> str:
     merged = []
     result = ""
 
-    for a, b in zip(word1, word2):
+    for a, b in zip(word1, word2): # zip built-in-func: Iterates over several iterables in parallel
         merged.append(a + b)
     
-    merged.append(word1[len(word2):])
-    merged.append(word2[len(word1):])
+    # Handle Remaining Characters
+    merged.append(word1[len(word2):]) # Append the remaining characters from word1 if word1 is longer than word2.
+    merged.append(word2[len(word1):]) # Append the remaining characters from word2 if word2 is longer than word1.
 
-    return result.join(merged)
+    return result.join(merged) # Join the merged list into a string.
 
 
 
