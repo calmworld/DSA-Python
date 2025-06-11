@@ -27,11 +27,24 @@ The reverse=True parameter is used to sort the characters in descending order (m
 This ensures that the most frequent character comes first in the sorted list.
 """
 
-def most_frequent_char(s):
-    return sorted(s, key=lambda x: (s.count(x), s.index(x)), reverse=True)[0]
+# def most_freq_char(s):
+#     return sorted(s, key=lambda x: (s.count(x), s.index(x)), reverse=True)[0]
 
 
-print(most_frequent_char("abca")) # a
-print(most_frequent_char("abbab")) # b
-print(most_frequent_char("hello")) # l
-print(most_frequent_char("zzz")) # z
+
+
+#+++++++++++++++++++++++++++++++++++#
+"""
+what if i wanted to account for empty spaces and capitalized letters?
+"""
+def most_freq_char(s):
+    cleaned = [c for c in s if c != " "]
+    lowered = s.lower()
+    
+    return sorted(cleaned, key=lambda x: (lowered.count(x.lower()), lowered.index(x.lower())), reverse=True)[0]
+
+print(most_freq_char("abca")) # a
+print(most_freq_char("abbab")) # b
+print(most_freq_char("hello")) # l
+print(most_freq_char("zzz")) # z
+print(most_freq_char("Apples are Amazing so are they BeautifUl")) # A
